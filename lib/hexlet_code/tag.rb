@@ -1,10 +1,12 @@
 module Tag
-  def self.build(tag, *attrs, &block)
+  def self.build(tag, attrs = {}, &block)
+    text = yield if block_given?
+    tail = "#{text}</#{tag}>"
     attributes = ''
 
-    attrs.first.to_a.to_h.each_pair{ |key, value| attributes << " #{key}='#{value}'" }
+    attrs.map{ |key, value| attributes << " #{key}='#{value}'" }
+    head = "<#{tag}#{attributes}>"
 
-    "<#{tag}#{attributes}>#{yield}</#{tag}>" if block_given?
-    "<#{tag}#{attributes}>"
+    block_given? ? head.concat(tail) : head  
   end
 end
