@@ -6,5 +6,4 @@ lint-fix:
 	bundle exec rubocop -A
 test:
 	rake test
-.PHONY:
-	test
+.PHONY: test

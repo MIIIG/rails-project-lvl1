@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
+# Generating html tags
 module Tag
-  def self.build(tag, attrs = {}, &block)
-    text = yield if block_given?
+  def self.build(tag, attrs = {})
+    text = yield if block
     tail = "#{text}</#{tag}>"
     attributes = ''
 
-    attrs.map{ |key, value| attributes << " #{key}='#{value}'" }
+    attrs.map { |key, value| attributes << " #{key}='#{value}'" }
     head = "<#{tag}#{attributes}>"
 
-    block_given? ? head.concat(tail) : head  
+    block ? head.concat(tail) : head
   end
 end

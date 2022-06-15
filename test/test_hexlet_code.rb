@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "test_helper"
-require "hexlet_code/tag"
+require 'test_helper'
+require 'hexlet_code/tag'
 
 class TestHexletCode < Minitest::Test
   def test_that_it_has_a_version_number
@@ -9,7 +9,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_tags_building
-    assert Tag.build('br') == "<br>"
+    assert Tag.build('br') == '<br>'
     assert Tag.build('img', src: 'path/to/image') == "<img src='path/to/image'>"
     assert Tag.build('input', type: 'submit', value: 'Save') == "<input type='submit' value='Save'>"
     assert Tag.build('label') { 'Email' } == '<label>Email</label>'
