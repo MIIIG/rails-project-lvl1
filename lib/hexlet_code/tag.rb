@@ -1,8 +1,8 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 # Generating html tags
 module Tag
-  def self.build(tag, attrs = {})
+  def self.build(tag, attrs = {}, &block)
     text = yield if block
     tail = "#{text}</#{tag}>"
     attributes = ''
