@@ -10,7 +10,7 @@ module Input
 	# p_send = public_send(:as, user)
 	# public_send(method, data)
 
-	def self.input(user, tag, opts = {})
+	def self.input(tag, opts = {}) do |user|
 		name = attrs[:name]
 		if user[tag].empty?
 			public_send(tag, user)
