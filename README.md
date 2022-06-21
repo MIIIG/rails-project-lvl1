@@ -26,7 +26,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Create user struct and generate form woth for_for method
+
+```ruby
+User = Struct.new(:name, :job, :gender, keyword_init: true)
+user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+
+HexletCode.form_for user do |f|
+  f.input :name
+  f.input :job, as: :text
+end
+
+# <form action="#" method="post">
+#   <input name="name" type="text" value="rob">
+#   <textarea cols="20" rows="40" name="job">hexlet</textarea>
+# </form>
+```
 
 ## Development
 
